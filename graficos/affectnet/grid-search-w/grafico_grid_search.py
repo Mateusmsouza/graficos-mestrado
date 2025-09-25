@@ -2,9 +2,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-file_path = '/content/mateusmsouza_facemixup_affectnet_unsaved_changes_table_data.csv'
+file_path = './mateusmsouza_facemixup_affectnet_unsaved_changes_table_data.csv'
 df = pd.read_csv(file_path)
-display(df.head())
 
 # Exemplo de dados
 W = df['w']
@@ -43,6 +42,7 @@ for p in set(prob):
 plt.xlabel("W (Parâmetro)")
 plt.ylabel("Acurácia Máxima")
 plt.title("Relação entre W, Acurácia e Probabilidade")
-plt.legend(title="Probabilidade", bbox_to_anchor=(1.05, 1), loc="upper left", markerscale=0.4, labelspacing=1.5)
+plt.legend(title="Probabilidade", bbox_to_anchor=(1.05, 1),
+           loc="upper left", markerscale=0.4, labelspacing=1.5)
 plt.tight_layout()
-plt.show()
+plt.savefig("plot.png")
