@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-file_path = './mateusmsouza_facemixup_affectnet_unsaved_changes_table_data.csv'
+file_path = './mateusmsouza_facemixup_affectnet_grid_search.csv'
 df = pd.read_csv(file_path)
 
 # Exemplo de dados
@@ -24,7 +24,7 @@ plt.colorbar(scatter, label="Probabilidade (escala de cores)")
 plt.show()
 '''
 # Mapeamento manual de cor por categoria
-colors = {0.2: "red", 0.4: "blue", 0.6: "green"}
+colors = {0.2: "red", 0.4: "blue", 0.6: "green", 0.8: "yellow", 0.9: "black"}
 
 plt.figure(figsize=(8, 6))
 for p in set(prob):
