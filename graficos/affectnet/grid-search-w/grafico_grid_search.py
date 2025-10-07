@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-file_path = './mateusmsouza_facemixup_affectnet_grid_search.csv'
+file_path = './grid_search_affectnet.csv'
 df = pd.read_csv(file_path)
 
 # Exemplo de dados
