@@ -2,7 +2,6 @@ import json
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-
 import pandas as pd
 
 report = sys.argv[1]
@@ -25,16 +24,19 @@ sums = [sum(sublist)
         for sublist in data["faces_with_failed_components_crop_paste_details"]]
 
 # Ordena do menor para o maior
-sorted_sums = sorted(sums)
+# Agrupa e conta quantas vezes cada soma apareceu
+value_counts = pd.Series(sums).value_counts().sort_index()
 
+# Exibe a tabela (opcional)
+print(value_counts)
 
-# Calcula os percentis (CDF)
-
-# Plota o gráfico
-plt.figure(figsize=(6, 4))
-plt.plot(y=sorted_sums, marker='o')
-plt.title("Gráfico de Percentil (CDF)")
-plt.xlabel("Soma por sublista")
-plt.ylabel("Percentil (%)")
-plt.grid(True, linestyle='--', alpha=0.6)
-plt.savefig("foo.png")
+# Plota o gráfico de barras
+plt.figure(figsize=(7, 5))
+value_counts.plot(kind='bar', color='steelblue', edgecolor='black')
+plt.title("Distribuição de Somas (Contagem por Valor)")
+plt.xlabel("Valor da soma por sublista")
+plt.ylabel("Quantidade de ocorrências")
+plt.grid(axis='y', linestyle='--', alpha=0.6)
+plt.tight_layout()
+plt.savefig("foo_counts.png")
+plt.show()
