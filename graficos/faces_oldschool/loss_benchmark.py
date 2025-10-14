@@ -30,17 +30,11 @@ all_dfs = [
         "Vanilla with Mixed Faces", "./runs_loss/efficientNetb0_classify_by_faces_BASELINE_6T_1_fold-1_Loss_train.csv"),
 ]
 
-
 df = {
-    # "Step": pd.read_csv(curves[0])["Step"],
-    "FaceMixup": face_mix["Value"],
-    "MixAugment": mixedupaugment["Value"],
-    "CutMix": cutmix["Value"],
-    "Random Erasing": baseline_random_erasing["Value"],
-    "MixUp": mixup["Value"],
-    "Vanilla": baseline_0t["Value"],
-    "Vanilla with Mixed Faces": baseline_6t["Value"]
+    exp["exp_name"]: exp["df"]["Value"]
+    for exp in all_dfs
 }
+
 df = pd.DataFrame(df)
 sns.set_theme(style='white', font_scale=1)
 sns.color_palette("rocket_r")
@@ -58,7 +52,7 @@ custom_palette = [facemixup_color, mixaugment_color,
                   cutmix_color, random_erasing_color, mixup, vanilla_6k, vanilla]
 
 ax = sns.lineplot(data=df, sort=True, palette=custom_palette)
-ax.set(xlabel='Epoch', ylabel='Accuracy')
+ax.set(xlabel='Epoch', ylabel='Loss')
 
 
 plt.title("Approaches")
