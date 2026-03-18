@@ -27,7 +27,8 @@ plt.show()
 colors = {0.2: "red", 0.4: "blue", 0.6: "green", 0.8: "yellow", 0.9: "black"}
 
 plt.figure(figsize=(8, 6))
-for p in set(prob):
+#for p in set(prob):
+for p in sorted(set(prob), reverse=True):
     mask = [i for i, val in enumerate(prob) if val == p]
     plt.scatter(
         [W[i] for i in mask],
